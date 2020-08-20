@@ -22,9 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mrcruz.osworks.domain.model.Cliente;
 import com.mrcruz.osworks.domain.repository.ClienteRepository;
+import com.mrcruz.osworks.domain.service.CadastroClienteService;
 
 @RestController
 public class ClienteController {
+	
+	@Autowired
+	CadastroClienteService cadastroCliente;
 	
 	@Autowired
 	ClienteRepository repository;
@@ -47,7 +51,7 @@ public class ClienteController {
 	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente adicionar(@Valid @RequestBody Cliente cliente) {
-		return repository.save(cliente);
+		return cadastroCliente.salvar(cliente);
 	}
 	
 	@PutMapping("/clientes/{id}")
@@ -68,7 +72,7 @@ public class ClienteController {
 			return ResponseEntity.notFound().build();
 		}
 		
-		repository.deleteById(idCliente);
+		cadastroCliente.excluir(idCliente);
 		
 		return ResponseEntity.noContent().build();
 	}
