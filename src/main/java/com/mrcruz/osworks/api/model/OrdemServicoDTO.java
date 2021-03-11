@@ -9,24 +9,21 @@ public class OrdemServicoDTO {
 	
 	
 	private Long id;
-	private String nomeCliente;
+	private ClienteDTO cliente;
 	private String descricao;
 	private BigDecimal preco;
 	private StatusOrdemServico status;
 	private OffsetDateTime dataAbertura;
 	private OffsetDateTime dataFinalizacao;
+	
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNomeCliente() {
-		return nomeCliente;
-	}
-	public void setNomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
-	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -56,6 +53,12 @@ public class OrdemServicoDTO {
 	}
 	public void setDataFinalizacao(OffsetDateTime dataFinalizacao) {
 		this.dataFinalizacao = dataFinalizacao;
+	}
+	public ClienteDTO getCliente() {
+		return cliente;
+	}
+	public void setCliente(ClienteDTO cliente) {
+		this.cliente = cliente;
 	}
 	
 	
