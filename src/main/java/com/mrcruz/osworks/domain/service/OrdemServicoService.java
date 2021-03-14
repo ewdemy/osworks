@@ -50,4 +50,13 @@ public class OrdemServicoService {
 		
 		return comentarioRepository.save(comentario);
 	}
+	
+	public void finalizar(Long ordemServicoId) {
+		OrdemServico ordemServico = repository.findById(ordemServicoId)
+				.orElseThrow(() -> new EntidadeNaoEncontradaException("Ordem de serviço não encontrada."));
+		
+		ordemServico.finalizar();
+		
+		repository.save(ordemServico);
+	}
 }
